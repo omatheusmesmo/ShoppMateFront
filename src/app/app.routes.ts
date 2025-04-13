@@ -12,3 +12,5 @@ export const routes: Routes = [
     component: SigninComponent
   }
 ];
+
+export default routes;

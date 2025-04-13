@@ -1,1 +1,58 @@
-<p>sigin works!</p>
+<div class="signin-container">
+  <h2>Sign In</h2>
+  <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+
+    <div>
+      <label for="fullName">Full Name:</label>
+      <input type="fullName" formControlName="fullName" id="fullName">
+
+      @if (signinForm.get('fullName')?.invalid && signinForm.get('fullName')?.touched) {
+        <div>
+          @if (signinForm.get('fullName')?.errors?.['required']) {
+            <small>Full Name is necessary</small>
+          }
+          @if (signinForm.get('fullName')?.errors?.['fullName']) {
+            <small>Invalid full name!</small>
+          }
+        </div>
+      }
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" type="email" formControlName="email">
+
+      @if (signinForm.get('email')?.invalid && signinForm.get('email')?.touched) {
+      <div>
+        @if (signinForm.get('email')?.errors?.['required']) {
+          <small>Email é obrigatório.</small>
+        }
+        @if (signinForm.get('email')?.errors?.['email']) {
+          <small>Email é inválido.</small>
+        }
+      </div>
+      }
+    </div>
+
+    <div>
+      <label for="password">Senha:</label>
+      <input id="password" type="password" formControlName="password">
+      @if (signinForm.get('password')?.invalid && signinForm.get('password')?.touched) {
+        <div>
+          @if (signinForm.get('password')?.errors?.['required']) {
+            <small>Senha é obrigatória.</small>
+          }
+          @if (signinForm.get('password')?.errors?.['pattern']) {
+            <small>Mínimo de 8 caracteres.</small>
+          }
+        </div>
+        }
+    </div>
+
+    <button type="submit">Sign In</button>
+
+  </form>
+
+
+
+</div>
