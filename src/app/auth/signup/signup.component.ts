@@ -7,9 +7,9 @@ import { MatCardModule } from '@angular/material/card';
 
 @Component({
   standalone: true,
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrl: './signin.component.scss',
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.scss',
   imports: [
     ReactiveFormsModule,
     MatInputModule,
@@ -18,11 +18,11 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule
   ]
 })
-export class SigninComponent {
-  signinForm: FormGroup;
+export class SignupComponent {
+  signupForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    this.signinForm = this.fb.group({
+    this.signupForm = this.fb.group({
       fullName: ['',[Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}$/)]]
@@ -30,7 +30,7 @@ export class SigninComponent {
   }
 
   onSubmit() {
-    if (this.signinForm.valid){
+    if (this.signupForm.valid){
 
     }else{
       console.log('Invalid inputs.');

@@ -1,15 +1,15 @@
-<div class="signin-container">
+<div class="signup-container">
   <mat-card>
     <mat-card-header>
       <mat-card-title>Criar Conta</mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
-      <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="outline">
           <mat-label>Nome Completo</mat-label>
           <input matInput formControlName="fullName">
-          @if (signinForm.get('fullName')?.errors?.['required'] && signinForm.get('fullName')?.touched) {
+          @if (signupForm.get('fullName')?.errors?.['required'] && signupForm.get('fullName')?.touched) {
             <mat-error>Nome completo é obrigatório</mat-error>
           }
         </mat-form-field>
@@ -17,10 +17,10 @@
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
           <input matInput type="email" formControlName="email">
-          @if (signinForm.get('email')?.errors?.['required'] && signinForm.get('email')?.touched) {
+          @if (signupForm.get('email')?.errors?.['required'] && signupForm.get('email')?.touched) {
             <mat-error>Email é obrigatório</mat-error>
           }
-          @if (signinForm.get('email')?.errors?.['email'] && signinForm.get('email')?.touched) {
+          @if (signupForm.get('email')?.errors?.['email'] && signupForm.get('email')?.touched) {
             <mat-error>Email é inválido</mat-error>
           }
         </mat-form-field>
@@ -28,10 +28,10 @@
         <mat-form-field appearance="outline">
           <mat-label>Senha</mat-label>
           <input matInput type="password" formControlName="password">
-          @if (signinForm.get('password')?.errors?.['required'] && signinForm.get('password')?.touched) {
+          @if (signupForm.get('password')?.errors?.['required'] && signupForm.get('password')?.touched) {
             <mat-error>Senha é obrigatória</mat-error>
           }
-          @if (signinForm.get('password')?.errors?.['pattern'] && signinForm.get('password')?.touched) {
+          @if (signupForm.get('password')?.errors?.['pattern'] && signupForm.get('password')?.touched) {
             <mat-error>A senha deve conter pelo menos 8 caracteres, incluindo maiúsculas, minúsculas, números e caracteres especiais</mat-error>
           }
         </mat-form-field>

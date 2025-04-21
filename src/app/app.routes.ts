@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
-import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 export const AppRoutes: Routes = [
   {
@@ -8,8 +8,8 @@ export const AppRoutes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'signin',
-    component: SigninComponent
+    path: 'signup',
+    component: SignupComponent
   }
 ];
 
