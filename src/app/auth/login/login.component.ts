@@ -4,10 +4,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { HttpClient, provideHttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError, finalize, tap, throwError, of } from 'rxjs';
-
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 interface LoginResponse {
   token: string;
   // user: {
@@ -27,7 +27,8 @@ interface LoginResponse {
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinner
   ]
 })
 export class LoginComponent {
@@ -76,6 +77,8 @@ export class LoginComponent {
 
         if (error.status === 401 || error.status === 400) {
           this.errorMessage = 'Credenciais inválidas.';
+        } else if (error.status === 0) {
+          this.errorMessage = 'Não foi possível conectar ao servidor. Verifique sua conexão ou tente novamente.';
         } else {
           this.errorMessage = 'Ocorreu um erro durante o login. Tente novamente mais tarde';
         }

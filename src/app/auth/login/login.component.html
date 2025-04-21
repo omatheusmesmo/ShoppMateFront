@@ -24,11 +24,23 @@
             <mat-error>Senha é obrigatória</mat-error>
           }
           @if (loginForm.get('password')?.errors?.['minlength'] && loginForm.get('password')?.touched) {
-            <mat-error>Mínimo de 6 caracteres</mat-error>
+            <mat-error>Mínimo de 8 caracteres</mat-error>
           }
         </mat-form-field>
 
-        <button mat-raised-button color="primary" type="submit">
+        @if(errorMessage){
+          <div>
+            <mat-error>{{errorMessage}}</mat-error>
+          </div>
+        }
+
+        @if(isLoading){
+          <div>
+            <mat-spinner></mat-spinner>
+          </div>
+        }
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid || isLoading">
           Entrar
         </button>
       </form>
